@@ -1,0 +1,126 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>The Default Document</title>
+<!--
+  BRIEF
+  Archetype  : study - long-form, read start to finish
+  House style: A / Editorial
+  Page       : A4, margin 22mm, text column 110mm, sidenotes in outer margin
+  Type       : Newsreader 400/600/400i at 11pt/1.55 + Sora 600 display
+  Accent     : #8a3324 burnt sienna on #fdfcfa
+-->
+<style>
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:400;font-display:block;src:url("file:///C:/Users/darga/.claude/skills/pdf-craft/fonts/Newsreader-400.woff2") format("woff2")}
+@font-face{font-family:"Newsreader";font-style:normal;font-weight:600;font-display:block;src:url("file:///C:/Users/darga/.claude/skills/pdf-craft/fonts/Newsreader-600.woff2") format("woff2")}
+@font-face{font-family:"Newsreader";font-style:italic;font-weight:400;font-display:block;src:url("file:///C:/Users/darga/.claude/skills/pdf-craft/fonts/Newsreader-400i.woff2") format("woff2")}
+@font-face{font-family:"Sora";font-style:normal;font-weight:600;font-display:block;src:url("file:///C:/Users/darga/.claude/skills/pdf-craft/fonts/Sora-600.woff2") format("woff2")}
+
+@page { size: A4 }
+
+body{
+  margin:0; width:110mm;
+  background:#fdfcfa; color:#1b1917;
+  font-family:"Newsreader","Constantia",Georgia,serif;
+  font-size:11pt; line-height:1.55;
+  -webkit-print-color-adjust:exact; text-wrap:pretty;
+}
+p{margin:0 0 .7em; orphans:3; widows:3; hyphens:auto}
+p + p{text-indent:1.2em; margin-top:-.7em}
+
+.eyebrow{
+  font-family:"Sora",Corbel,sans-serif; font-weight:600;
+  font-size:7.5pt; letter-spacing:.16em; text-transform:uppercase;
+  color:#8a3324; margin:0 0 1.5mm;
+}
+h1{
+  font-family:"Sora",Corbel,sans-serif; font-weight:600;
+  font-size:23pt; line-height:1.12; letter-spacing:-.015em;
+  margin:0 0 3mm; break-after:avoid;
+}
+.standfirst{font-size:12.5pt; line-height:1.45; color:#4a443f; margin:0 0 7mm}
+h2{
+  font-family:"Sora",Corbel,sans-serif; font-weight:600;
+  font-size:10.5pt; letter-spacing:.005em;
+  margin:8mm 0 2mm; break-after:avoid;
+}
+.lead::first-letter{
+  float:left; font-family:"Sora",Corbel,sans-serif; font-weight:600;
+  font-size:40pt; line-height:.8; margin:3pt 5pt 0 0; color:#8a3324;
+}
+.lead{text-indent:0}
+
+/* Sidenotes float into the outer margin - reliable across page breaks. */
+.sn{
+  float:right; clear:right; width:44mm; margin:1mm -52mm 4mm 0;
+  font-size:8.5pt; line-height:1.35; color:#6b635c; text-indent:0;
+  border-top:.5pt solid #d9d2c9; padding-top:1.5mm;
+}
+blockquote{
+  margin:6mm 0; padding-left:5mm; border-left:2pt solid #8a3324;
+  font-size:12pt; line-height:1.4; font-style:italic; color:#3a342f;
+  break-inside:avoid; text-indent:0;
+}
+.rule{border:0; border-top:.5pt solid #ddd6cc; margin:7mm 0}
+em{font-style:italic}
+strong{font-weight:600}
+</style>
+
+<p class="eyebrow">Typography &middot; Working note</p>
+<h1>The default document</h1>
+<p class="standfirst">Why generated PDFs all look alike, and the three decisions
+that stop it happening.</p>
+
+<p class="lead">Every document produced without a design decision converges on the
+same artefact. Not because the tool is limited, but because a default is what you
+get when nobody chooses. The result is recognisable at a glance: a centred bold
+title, an unbroken ladder of headings, bullets standing in for sentences, one
+saturated blue doing all the accent work.</p>
+
+<p class="sn">The tell is uniformity. Real documents differ because their readers
+differ - a runbook and a board memo have almost nothing in common.</p>
+
+<p>The fix is not more effort per document. It is making the choice explicit and
+making it <em>vary</em>. Three decisions carry nearly all the weight.</p>
+
+<h2>1. Decide what the reader does</h2>
+<p>A memo is read once, standing up, to reach a decision. A manual is read with
+both hands busy. A report is studied. These are different objects, and they should
+not share a layout. Pick the archetype before picking anything visual, because
+everything downstream follows from it.</p>
+
+<h2>2. Set the measure, not the margin</h2>
+<p>The most common failure in generated documents is a text column running the full
+width of the page. Sixty to seventy-five characters is the readable range; a full
+A4 measure is closer to a hundred and ten. The correction is to narrow the column,
+not to widen the margins - the leftover space then becomes useful, somewhere for
+sidenotes, figures and running heads to live.</p>
+
+<p class="sn">This page uses a 110mm column inside a 166mm content area. The
+remainder is not waste; it is where this note is sitting.</p>
+
+<blockquote>Space above a heading, not below it. A heading belongs to the text
+that follows, and the whitespace should say so.</blockquote>
+
+<h2>3. Choose two faces and three sizes</h2>
+<p>One text face, one display face, and no more than three sizes will carry any
+document. The discipline is in refusing the fourth size and the second accent
+colour. Hierarchy comes from weight, space and position long before it comes from
+scale - and a document that signals hierarchy with size alone reads as an outline
+rather than a piece of writing.</p>
+
+<hr class="rule">
+
+<h2>The failure worth knowing about</h2>
+<p>In this rendering pipeline, a font that fails to load does not raise an error.
+It silently falls back to Times New Roman, and the document still renders, still
+looks plausible, and is quietly wrong. Three causes account for nearly all of it:
+a variable font, which cannot be embedded at all; a remote stylesheet, which is
+never fetched; and a multi-word family name left unquoted in CSS, which can
+invalidate the whole declaration.</p>
+
+<p class="sn">Verify rather than trust: inspecting the embedded faces of the
+finished PDF takes a second and catches all three.</p>
+
+<p>Each of these produces the same symptom and none of them announces itself. That
+is the argument for checking the output rather than assuming it - the difference
+between a document that was designed and one that merely rendered.</p>
