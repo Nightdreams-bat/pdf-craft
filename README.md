@@ -1,6 +1,6 @@
 <div align="center">
 
-# pdf-craft
+<img src="assets/header.png" alt="pdf-craft" width="100%">
 
 **A Claude Code skill that makes AI-generated PDFs look designed instead of defaulted.**
 
